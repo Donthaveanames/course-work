@@ -1,4 +1,8 @@
 <Solution>
+  <Folder Name="/Элементы решения/">
+    <File Path="docker-compose.dev.yml" />
+    <File Path="docker-compose.yml" />
+  </Folder>
   <Project Path="../../../PycharmProjects/backend/backend.pyproj" Type="888888a0-9f3d-457c-b088-3a5042f75d52" Id="5eadd7c8-d9d2-4f56-af83-21354070fb75">
     <Build Project="false" />
   </Project>

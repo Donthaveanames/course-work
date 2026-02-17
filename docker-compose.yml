@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+
+  frontend-builder:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: export
+    volumes:
+      - static_volume:/build
+
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+    volumes:
+      - static_volume:/app/static
+    depends_on:
+      - frontend-builder
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  static_volume:
