@@ -1,0 +1,406 @@
+﻿/* src/Style/createlesson.css */
+
+:root {
+    --dvfu-blue: #0066B3;
+    --dvfu-light-blue: #1a7ac9;
+    --dvfu-dark-blue: #005299;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --border-color: #e0e0e0;
+    --success-green: #4caf50;
+    --error-red: #f44336;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+}
+
+/* Основной контейнер формы */
+.create-lesson-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 102, 179, 0.1);
+}
+
+/* Заголовок */
+.create-lesson-title {
+    color: var(--dvfu-blue);
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--dvfu-light-blue);
+}
+
+.create-lesson-subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 0 0 30px 0;
+}
+
+/* Уведомления */
+.lesson-alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lesson-alert.error {
+    background-color: rgba(244, 67, 54, 0.1);
+    border-left: 4px solid var(--error-red);
+    color: var(--error-red);
+}
+
+.lesson-alert.success {
+    background-color: rgba(76, 175, 80, 0.1);
+    border-left: 4px solid var(--success-green);
+    color: var(--success-green);
+}
+
+/* Группа переключателей типа загрузки */
+.upload-type-group {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-color);
+}
+
+.upload-type-label {
+    display: block;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.upload-type-options {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.upload-type-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .upload-type-option input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--dvfu-blue);
+        border-radius: 50%;
+        margin-right: 10px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+        .upload-type-option input[type="radio"]:checked {
+            background-color: var(--dvfu-blue);
+            box-shadow: inset 0 0 0 4px var(--white);
+        }
+
+        .upload-type-option input[type="radio"]:hover {
+            border-color: var(--dvfu-light-blue);
+            transform: scale(1.1);
+        }
+
+    .upload-type-option span {
+        color: var(--text-primary);
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+/* Группы полей формы */
+.form-group {
+    margin-bottom: 25px;
+}
+
+    .form-group label {
+        display: block;
+        color: var(--text-primary);
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+        .form-group label.required::after {
+            content: "*";
+            color: var(--error-red);
+            margin-left: 4px;
+        }
+
+/* Поля ввода */
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--text-primary);
+    background-color: var(--white);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+    .form-input:hover,
+    .form-textarea:hover {
+        border-color: var(--dvfu-light-blue);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+        outline: none;
+        border-color: var(--dvfu-blue);
+        box-shadow: 0 0 0 3px rgba(0, 102, 179, 0.1);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+        color: #999;
+        font-size: 14px;
+    }
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+/* Поле загрузки файлов */
+.file-input-wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--light-gray);
+    border: 2px dashed var(--dvfu-blue);
+    border-radius: 8px;
+    color: var(--dvfu-blue);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+    .file-input-label:hover {
+        background-color: rgba(0, 102, 179, 0.05);
+        border-color: var(--dvfu-light-blue);
+        transform: translateY(-2px);
+    }
+
+    .file-input-label:active {
+        transform: translateY(0);
+    }
+
+.file-info {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: rgba(0, 102, 179, 0.05);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+    .file-info::before {
+        content: "📁";
+        margin-right: 8px;
+        font-size: 16px;
+    }
+
+/* Кнопка отправки */
+.submit-button {
+    width: 100%;
+    padding: 16px 28px;
+    background-color: var(--dvfu-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+    .submit-button:hover:not(:disabled) {
+        background-color: var(--dvfu-light-blue);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 102, 179, 0.3);
+    }
+
+    .submit-button:active:not(:disabled) {
+        transform: translateY(0);
+    }
+
+    .submit-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #999;
+    }
+
+    /* Состояние загрузки */
+    .submit-button.loading {
+        position: relative;
+        color: transparent;
+    }
+
+        .submit-button.loading::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spinner 0.8s linear infinite;
+        }
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Подсказки */
+.field-hint {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+}
+
+    .field-hint::before {
+        content: "ℹ️";
+        margin-right: 5px;
+        font-size: 12px;
+    }
+
+/* Разделитель */
+.form-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 30px 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .create-lesson-container {
+        padding: 25px;
+    }
+
+    .create-lesson-title {
+        font-size: 24px;
+    }
+
+    .upload-type-options {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-input,
+    .form-textarea,
+    .file-input-label,
+    .submit-button {
+        padding: 10px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .create-lesson-container {
+        padding: 20px;
+    }
+
+    .create-lesson-title {
+        font-size: 20px;
+    }
+
+    .upload-type-group {
+        padding: 15px;
+    }
+}
+
+/* Стили для скролла внутри формы */
+.create-lesson-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.create-lesson-container::-webkit-scrollbar-track {
+    background: var(--light-gray);
+    border-radius: 4px;
+}
+
+.create-lesson-container::-webkit-scrollbar-thumb {
+    background: var(--dvfu-light-blue);
+    border-radius: 4px;
+}
+
+    .create-lesson-container::-webkit-scrollbar-thumb:hover {
+        background: var(--dvfu-blue);
+    }
+
+/* Анимация появления формы */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.create-lesson-container {
+    animation: fadeInUp 0.5s ease-out;
+}
